@@ -121,79 +121,18 @@ cat /dev/mtdblock6 > /mnt/mmc/backup_config.bin
 注意！以上所有操作均需自行承担风险。作者对因使用本页面发布的材料、软件及其他信息而对用户或第三方造成的任何损害不承担任何责任。
 
 
+# 编译固件
 
+## 准备
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Preparation
-
-1. Install dependencies:
+1. 安装依赖
 
 ```bash
 sudo apt install git cmake lib32z1 lib32stdc++6 u-boot-tools dbus python3-pip dos2unix
 pip3 install click
 ```
 
-2. Install Hi3518Ev300 toolchain:
+2. 安装 Hi3518Ev300 工具链：
 
 ```bash
 tar -zxf arm-himix100-linux.tgz
@@ -204,37 +143,37 @@ sudo chmod 777 /opt/hisi-linux/x86-arm/arm-himix100-linux/target/usr/app/lib
 gnome-session-quit
 ```
 
-## Usage
+## 使用
 
-Clone the repository:
+克隆仓库：
 
 ```bash
 git clone https://github.com/kasitoru/mjsxj02hl_firmware
 cd mjsxj02hl_firmware
 ```
 
-### Build firmware:
+### 构建固件：
 ```bash
 make FIRMWARE_VER=x.y.z
 ```
 
-### Unpack image:
+### 解压镜像：
 ```bash
 make FIRMWARE_FILE=image.bin FIRMWARE_DIR=unpkg unpack
 ```
 
-or (defaults input file `demo_hlc6.bin` and output directory `temp/firmware`):
+或者（默认输入文件为 `demo_hlc6.bin`，输出目录为 `temp/firmware`）：
 
 ```bash
 make unpack
 ```
 
-### Pack image:
+### 打包镜像：
 ```bash
 make FIRMWARE_DIR=unpkg FIRMWARE_FILE=image.bin pack
 ```
 
-or (defaults input directory `temp/firmware` and output file `demo_hlc6.bin`):
+或者（默认输入目录为`temp/firmware`，输出文件为“demo_hlc6.bin”）：
 
 ```bash
 make pack
